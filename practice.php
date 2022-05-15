@@ -1,7 +1,7 @@
 <?php
 
 // Dynamic Message alert function
-function messageAlert($message, $alertType="danger"){
+function messageAlert($message, $alertType="warning"){
   return "<div class=\"alert alert-{$alertType} alert-dismissible fade show\" role=\"alert\">
   {$message}
 <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
@@ -21,7 +21,12 @@ function eduMailValidation($mail){
   $eduMails = ['du.edu.bd', 'nu.edu.bd', 'diu.edu.bd', 'nsu.edu.bd'];
   $mailExploded = explode('@', $mail, 2);
 
-  return $mailExploded;
+  if(in_array($mailExploded[1], $eduMails)){
+    return true;
+  }else{
+    return false;
+  }
+
 }
 
 
@@ -59,16 +64,16 @@ if(isset($_POST['submitButton'])){
   $termsConds;
 
   if(empty($fname) || $lname == "" || empty($email) || empty($phone) || empty($password) || empty($conpassword) ){
-    $alertMsg = messageAlert("All fields are required !");
+    $alertMsg = messageAlert("All fields are required !", "danger");
   }elseif(emailValidation($email) == false){
-    $alertMsg = messageAlert("Email is invalid", "warning");
-   }elseif(eduMailValidation($email)){
-    print_r(eduMailValidation($email));
+    $alertMsg = messageAlert("Email is invalid");
+   }elseif(eduMailValidation($email) == false){
+    $alertMsg = messageAlert("Please enter educational mail");
    }
    elseif(matchPassword($password, $conpassword) == false){
-    $alertMsg = messageAlert("Password doesn't match", "warning");
+    $alertMsg = messageAlert("Password doesn't match");
    }elseif(empty($_POST['formAgreement'])){
-    $alertMsg = messageAlert("Please tick the checkbox", "warning");
+    $alertMsg = messageAlert("Please tick the checkbox");
    }
   else{
     $alertMsg = messageAlert("Form submission successfull !", "success");
@@ -77,6 +82,8 @@ if(isset($_POST['submitButton'])){
 
 
 }
+
+
 
 
 
