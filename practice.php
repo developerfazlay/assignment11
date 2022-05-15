@@ -48,10 +48,6 @@ if($pass === $conPass){
 
 
 
-
-
-
-
 if(isset($_POST['submitButton'])){
   $fname        = $_POST['firstname'];
   $lname        = $_POST['lastname'];
@@ -89,12 +85,6 @@ if(isset($_POST['submitButton'])){
 
 
 
-
-
-
-
-
-
 ?>
 
 
@@ -105,11 +95,21 @@ if(isset($_POST['submitButton'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registration Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+        .form-inner {
+            width: 650px;
+            margin: auto;
+            padding: 25px;
+            box-shadow: 1px 1px 5px 3px #ddd;
+            border-radius: 10px;
+        }
+
+    </style>
   </head>
   <body>
     
-    <div class="registration-form-area my-5">
+    <div class="registration-form-area mb-5 mt-3">
       <div class="container">
         <div class="row">
           <div class="col-12">
