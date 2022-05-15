@@ -1,0 +1,7 @@
+.form-inner {
+    width: 650px;
+    margin: auto;
+    padding: 25px;
+    box-shadow: 1px 2px 10px 2px #eee;
+    border-radius: 10px;
+}
